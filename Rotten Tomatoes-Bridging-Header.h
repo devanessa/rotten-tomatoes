@@ -3,3 +3,4 @@
 //
 
 #import "UIImageView+AFNetworking.h"
+#import <ZAActivityBar/ZAActivityBar.h>

@@ -19,8 +19,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         movieTableView.dataSource = self
         let apiKey = "h5m457aefmgkhdrm3ckgnrrk"
         let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=\(apiKey)&limit=20&country=us"
+
+        ZAActivityBar.showWithStatus("Fetching Movies...")
         
         let request = NSMutableURLRequest(URL: NSURL.URLWithString(RottenTomatoesURLString))
+        
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
             var errorValue: NSError? = nil
             let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary
@@ -28,8 +31,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.movies = dictionary["movies"] as [NSDictionary]
             
             self.movieTableView.reloadData()
+            ZAActivityBar.dismiss()
         })
-        
         
     }
 
@@ -51,20 +54,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.titleLabel.text = movie["title"] as? String
         cell.synopsisLabel.text = movie["synopsis"] as? String
         
-        var posters = movie["posters"] as NSDictionary
-        var posterUrl = posters["thumbnail"] as String
+        let posters = movie["posters"] as NSDictionary
+        let posterUrl = posters["thumbnail"] as String
 
         cell.posterView.setImageWithURL(NSURL(string: posterUrl))
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        var detailViewController = segue.destinationViewController as MovieDetailViewController
+        
+        let indexPath = movieTableView.indexPathForSelectedRow()!
+        detailViewController.movieDetails = movies[indexPath.row]
+        
         let movieCell = movieTableView.cellForRowAtIndexPath(indexPath) as MovieTableViewCell
-        
-        let detailedViewController = MovieDetailsViewController()
-        detailedViewController.posterView = UIImageView(image: movieCell.posterView.image)
-        
-        self.navigationController?.pushViewController(detailedViewController, animated: true)
+        detailViewController.thumbImg = movieCell.posterView.image!
     }
 }
 

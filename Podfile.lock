@@ -20,11 +20,17 @@ PODS:
   - AFNetworking/UIKit (2.4.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - SKBounceAnimation (1.0.04)
+  - ZAActivityBar (0.1.1):
+    - SKBounceAnimation (~> 1.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - ZAActivityBar (~> 0.1.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  SKBounceAnimation: a47c30f67d3e4b948b1823ce5957d72d4382dd73
+  ZAActivityBar: 95eae98fd5235a1ae6396499219b739f943fd4c0
 
 COCOAPODS: 0.33.1

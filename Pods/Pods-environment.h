@@ -48,3 +48,15 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 4
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// SKBounceAnimation
+#define COCOAPODS_POD_AVAILABLE_SKBounceAnimation
+#define COCOAPODS_VERSION_MAJOR_SKBounceAnimation 1
+#define COCOAPODS_VERSION_MINOR_SKBounceAnimation 0
+#define COCOAPODS_VERSION_PATCH_SKBounceAnimation 4
+
+// ZAActivityBar
+#define COCOAPODS_POD_AVAILABLE_ZAActivityBar
+#define COCOAPODS_VERSION_MAJOR_ZAActivityBar 0
+#define COCOAPODS_VERSION_MINOR_ZAActivityBar 1
+#define COCOAPODS_VERSION_PATCH_ZAActivityBar 1
+

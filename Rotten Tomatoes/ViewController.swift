@@ -12,17 +12,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var movieTableView: UITableView!
     var movies: [NSDictionary] = []
+    var refreshControl = UIRefreshControl()
+    
+    let apiKey = "h5m457aefmgkhdrm3ckgnrrk"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         movieTableView.dataSource = self
-        let apiKey = "h5m457aefmgkhdrm3ckgnrrk"
-        let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=\(apiKey)&limit=20&country=us"
 
+        refreshControl.attributedTitle = NSAttributedString(string: "Refresh movie listings")
+        refreshControl.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
+        movieTableView.addSubview(refreshControl)
+        
+        fetchMovieData()
+    }
+    
+    func fetchMovieData(refresh: Bool = false) {
         ZAActivityBar.showWithStatus("Fetching Movies...")
         
-        let request = NSMutableURLRequest(URL: NSURL.URLWithString(RottenTomatoesURLString))
+        let request = NSMutableURLRequest(URL: NSURL.URLWithString(getURLString()))
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
             var errorValue: NSError? = nil
@@ -32,8 +41,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             self.movieTableView.reloadData()
             ZAActivityBar.dismiss()
+            
+            if refresh {
+                self.refreshControl.endRefreshing()
+            }
         })
-        
+    }
+    
+    func refreshData() {
+        fetchMovieData(refresh: true)
+    }
+    
+    func getURLString() -> String {
+        return "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=\(apiKey)&limit=20&country=us"
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,13 +82,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        var detailViewController = segue.destinationViewController as MovieDetailViewController
-        
-        let indexPath = movieTableView.indexPathForSelectedRow()!
-        detailViewController.movieDetails = movies[indexPath.row]
-        
-        let movieCell = movieTableView.cellForRowAtIndexPath(indexPath) as MovieTableViewCell
-        detailViewController.thumbImg = movieCell.posterView.image!
+        if (segue.identifier == "detailSegue") {
+            var detailViewController = segue.destinationViewController as MovieDetailViewController
+            
+            let indexPath = movieTableView.indexPathForSelectedRow()!
+            detailViewController.movieDetails = movies[indexPath.row]
+            
+            let movieCell = movieTableView.cellForRowAtIndexPath(indexPath) as MovieTableViewCell
+            detailViewController.thumbImg = movieCell.posterView.image!
+        }
     }
 }
 

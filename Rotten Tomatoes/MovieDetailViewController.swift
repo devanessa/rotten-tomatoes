@@ -12,6 +12,7 @@ class MovieDetailViewController: UIViewController {
 
     @IBOutlet weak var synopsisLabel: UILabel!
     @IBOutlet weak var posterView: UIImageView!
+    @IBOutlet weak var synopsisScrollView: UIScrollView!
     
     var thumbImg: UIImage = UIImage()
     var movieDetails: NSDictionary = NSDictionary()

@@ -46,7 +46,7 @@
                                             <outlet property="posterView" destination="aw0-5t-eJ5" id="N1u-yb-PAE"/>
                                             <outlet property="synopsisLabel" destination="AHt-Gq-p3e" id="xdS-UX-yBk"/>
                                             <outlet property="titleLabel" destination="Y3f-S1-yif" id="0fX-25-e7R"/>
-                                            <segue destination="8Nr-rQ-Guq" kind="push" id="sEj-Df-4w4"/>
+                                            <segue destination="8Nr-rQ-Guq" kind="push" identifier="detailSegue" id="sEj-Df-4w4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -76,15 +76,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synopsis" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7vG-lD-XVR">
-                                <rect key="frame" x="0.0" y="337" width="320" height="231"/>
+                            <view contentMode="scaleToFill" id="S4n-us-tyO">
+                                <rect key="frame" x="160" y="212" width="160" height="214"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999973" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synopsis" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7vG-lD-XVR">
+                                        <rect key="frame" x="39" y="-78" width="320" height="314"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="8xL-bC-t3s">
-                                <rect key="frame" x="0.0" y="47" width="320" height="340"/>
+                                <rect key="frame" x="0.0" y="-13" width="320" height="581"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
@@ -92,7 +99,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="u3I-cB-9SU"/>
                     <connections>
-                        <outlet property="posterView" destination="8xL-bC-t3s" id="Zfh-Ub-HnI"/>
+                        <outlet property="posterView" destination="8xL-bC-t3s" id="tmm-B1-MKL"/>
                         <outlet property="synopsisLabel" destination="7vG-lD-XVR" id="oKj-vj-W4S"/>
                     </connections>
                 </viewController>

@@ -8,19 +8,41 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
 
+    @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var movieTableView: UITableView!
+    
+    @IBOutlet weak var movieBarItem: UITabBarItem!
+    @IBOutlet weak var dvdBarItem: UITabBarItem!
+    
+    @IBOutlet weak var tabBar: UITabBar!
     var movies: [NSDictionary] = []
     var refreshControl = UIRefreshControl()
+    
+    var listingType: ListingType = ListingType.BoxOffice
     
     let apiKey = "h5m457aefmgkhdrm3ckgnrrk"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        alertView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 320, height: 50)
+//        alertView.backgroundColor = UIColor.blackColor()
+//        alertView.alpha = 0.8
+        
+//        alertView.hidden = true
+        
         movieTableView.dataSource = self
-
+        movieTableView.delegate = self
+        tabBar.delegate = self
+        
+        // Default to Movie listings
+        if tabBar.selectedItem == nil {
+            tabBar.selectedItem = movieBarItem
+        }
+        navigationItem.title = tabBar.selectedItem?.title
+        
         refreshControl.attributedTitle = NSAttributedString(string: "Refresh movie listings")
         refreshControl.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
         movieTableView.addSubview(refreshControl)
@@ -29,21 +51,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func fetchMovieData(refresh: Bool = false) {
-        ZAActivityBar.showWithStatus("Fetching Movies...")
-        
+        if !refresh {
+            ZAActivityBar.showWithStatus("Fetching Movies...")
+        }
         let request = NSMutableURLRequest(URL: NSURL.URLWithString(getURLString()))
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
-            var errorValue: NSError? = nil
-            let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary
             
-            self.movies = dictionary["movies"] as [NSDictionary]
-            
-            self.movieTableView.reloadData()
-            ZAActivityBar.dismiss()
+            if error != nil {
+//                self.alertView.hidden = false
+                println("Problem with connecting to network!")
+            } else {
+//                self.alertView.hidden = true
+                var errorValue: NSError? = nil
+                let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary
+                
+                self.movies = dictionary["movies"] as [NSDictionary]
+                
+                self.movieTableView.reloadData()
+            }
             
             if refresh {
                 self.refreshControl.endRefreshing()
+            } else {
+                ZAActivityBar.dismiss()
             }
         })
     }
@@ -53,12 +84,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func getURLString() -> String {
-        return "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=\(apiKey)&limit=20&country=us"
+        let listingString = self.listingType.urlString()
+
+        return "http://api.rottentomatoes.com/api/public/v1.0/lists/\(listingString).json?apikey=\(apiKey)&limit=50&country=us"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem!) {
+        navigationItem.title = item.title
+        if item.title == "Box Office" {
+            listingType = ListingType.BoxOffice
+        } else {
+            listingType = ListingType.Dvd
+        }
+        
+        fetchMovieData()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

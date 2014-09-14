@@ -21,7 +21,6 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = movieDetails["title"] as? String
-        synopsisLabel.text = movieDetails["synopsis"] as? String
         
         let posters = movieDetails["posters"] as NSDictionary
         var originalPosterURL = posters["original"] as String
@@ -29,6 +28,8 @@ class MovieDetailViewController: UIViewController {
         
         let thumbView = self.posterView.image
         posterView.setImageWithURL(NSURL(string: originalPosterURL), placeholderImage: thumbImg)
+        println(originalPosterURL)
+        synopsisLabel.text = movieDetails["synopsis"] as? String
     }
 
     override func didReceiveMemoryWarning() {

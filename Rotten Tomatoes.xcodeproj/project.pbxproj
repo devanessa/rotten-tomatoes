@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5436DA9519C4E44100E9BDAD /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436DA9419C4E44100E9BDAD /* MovieDetailViewController.swift */; };
 		5436DA9719C55C9B00E9BDAD /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436DA9619C55C9B00E9BDAD /* enums.swift */; };
+		5436DA9919C59DDC00E9BDAD /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436DA9819C59DDC00E9BDAD /* MovieModel.swift */; };
 		54EC327B19C148AB000A335B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC327A19C148AB000A335B /* AppDelegate.swift */; };
 		54EC327D19C148AB000A335B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC327C19C148AB000A335B /* ViewController.swift */; };
 		54EC328019C148AB000A335B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54EC327E19C148AB000A335B /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		5436DA8D19C42F9700E9BDAD /* Rotten Tomatoes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rotten Tomatoes-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		5436DA9419C4E44100E9BDAD /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		5436DA9619C55C9B00E9BDAD /* enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = enums.swift; sourceTree = "<group>"; };
+		5436DA9819C59DDC00E9BDAD /* MovieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		54EC327519C148AB000A335B /* Rotten Tomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rotten Tomatoes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54EC327919C148AB000A335B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54EC327A19C148AB000A335B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				5436DA8D19C42F9700E9BDAD /* Rotten Tomatoes-Bridging-Header.h */,
 				5436DA9419C4E44100E9BDAD /* MovieDetailViewController.swift */,
 				5436DA9619C55C9B00E9BDAD /* enums.swift */,
+				5436DA9819C59DDC00E9BDAD /* MovieModel.swift */,
 			);
 			path = "Rotten Tomatoes";
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5436DA9919C59DDC00E9BDAD /* MovieModel.swift in Sources */,
 				5436DA9519C4E44100E9BDAD /* MovieDetailViewController.swift in Sources */,
 				5436DA9719C55C9B00E9BDAD /* enums.swift in Sources */,
 				54EC327D19C148AB000A335B /* ViewController.swift in Sources */,

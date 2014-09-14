@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+class MovieModel {
+    var title: NSString
+    var rating: NSString
+    var synopsis: NSString
+    
+    init(dictionary: NSDictionary){
+        title = dictionary["title"] as NSString
+        rating = dictionary["rating"] as NSString
+        synopsis = dictionary["synopsis"] as NSString
+    }
+    
+}

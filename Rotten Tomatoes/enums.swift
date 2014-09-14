@@ -9,13 +9,13 @@
 import Foundation
 
 enum ListingType {
-    case BoxOffice, Dvd
+    case BoxOffice, TopRentals
     
     func urlString() -> String {
         switch self {
         case .BoxOffice:
             return "movies/box_office"
-        case .Dvd:
+        case .TopRentals:
             return "dvds/top_rentals"
         }
     }

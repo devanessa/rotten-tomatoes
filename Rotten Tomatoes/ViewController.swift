@@ -43,7 +43,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         navigationItem.title = tabBar.selectedItem?.title
         
-        refreshControl.attributedTitle = NSAttributedString(string: "Refresh movie listings")
+        refreshControl.tintColor = UIColor.whiteColor()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refresh movie listings", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
         refreshControl.addTarget(self, action: Selector("refreshData"), forControlEvents: UIControlEvents.ValueChanged)
         movieTableView.addSubview(refreshControl)
         
@@ -60,6 +61,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             if error != nil {
 //                self.alertView.hidden = false
+                ZAActivityBar.showErrorWithStatus("Problem with connecting to network! Try again later.")
                 println("Problem with connecting to network!")
             } else {
 //                self.alertView.hidden = true
@@ -69,13 +71,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.movies = dictionary["movies"] as [NSDictionary]
                 
                 self.movieTableView.reloadData()
+                if !refresh {
+                    ZAActivityBar.dismiss()
+                }
             }
             
             if refresh {
                 self.refreshControl.endRefreshing()
-            } else {
-                ZAActivityBar.dismiss()
-            }
+            } 
         })
     }
     
@@ -94,7 +97,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if item.title == "Box Office" {
             listingType = ListingType.BoxOffice
         } else {
-            listingType = ListingType.Dvd
+            listingType = ListingType.TopRentals
         }
         
         fetchMovieData()
@@ -116,7 +119,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let posters = movie["posters"] as NSDictionary
         let posterUrl = posters["thumbnail"] as String
 
+        cell.posterView.alpha = 0.0
         cell.posterView.setImageWithURL(NSURL(string: posterUrl))
+        UIView.animateWithDuration(0.5, animations: {
+            cell.posterView.alpha = 1.0
+        })
+
         return cell
     }
     

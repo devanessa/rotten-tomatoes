@@ -16,7 +16,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var dvdBarItem: UITabBarItem!
     
     @IBOutlet weak var tabBar: UITabBar!
-    var movies: [NSDictionary] = []
+
+    var movies: [MovieModel] = []
     var refreshControl = UIRefreshControl()
     
     var listingType: ListingType = ListingType.BoxOffice
@@ -64,7 +65,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 var errorValue: NSError? = nil
                 let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary
                 
-                self.movies = dictionary["movies"] as [NSDictionary]
+                let movieDict = dictionary["movies"] as [NSDictionary]
+                self.movies = MovieModel.moviesFromDictionaryList(movieDict)
                 
                 self.movieTableView.reloadData()
                 if !refresh {
@@ -106,17 +108,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = movieTableView.dequeueReusableCellWithIdentifier("moviecell") as MovieTableViewCell
         
-        // turn this into a Movie object??
         var movie = movies[indexPath.row]
         
-        cell.titleLabel.text = movie["title"] as? String
-        cell.synopsisLabel.text = movie["synopsis"] as? String
+        cell.titleLabel.text = movie.title
+        cell.synopsisLabel.text = movie.synopsis
+        cell.setAudienceScoreLabel(movie.audienceScore)
+        cell.setCriticScoreLabel(movie.criticScore)
         
-        let posters = movie["posters"] as NSDictionary
-        let posterUrl = posters["thumbnail"] as String
-
         cell.posterView.alpha = 0.0
-        cell.posterView.setImageWithURL(NSURL(string: posterUrl))
+        cell.posterView.setImageWithURL(NSURL(string: movie.thumbUrl))
         UIView.animateWithDuration(0.5, animations: {
             cell.posterView.alpha = 1.0
         })

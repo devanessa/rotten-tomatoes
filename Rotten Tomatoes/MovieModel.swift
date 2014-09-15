@@ -9,18 +9,30 @@
 import Foundation
 
 class MovieModel {
-    var title, mpaa, synopsis: NSString
-    var runtime, criticScore, audienceScore: Int
+    var title, mpaa, synopsis, thumbUrl, posterUrl: String
+    var runtime, criticScore, audienceScore: NSInteger
     
     init(dictionary: NSDictionary){
-        title = dictionary["title"] as NSString
-        mpaa = dictionary["mpaa_rating"] as NSString
-        synopsis = dictionary["synopsis"] as NSString
-        runtime = dictionary["runtime"] as Int
-        
+        title = dictionary["title"] as String
+        mpaa = dictionary["mpaa_rating"] as String
+        synopsis = dictionary["synopsis"] as String
+        runtime = dictionary["runtime"] as NSInteger
+
         let ratings = dictionary["ratings"] as NSDictionary
-        criticScore = ratings["critics_rating"] as Int
-        audienceScore = ratings["audience_score"] as Int
+        criticScore = ratings["critics_score"] as NSInteger
+        audienceScore = ratings["audience_score"] as NSInteger
+        
+        let posters = dictionary["posters"] as NSDictionary
+        thumbUrl = posters["thumbnail"] as String
+        // Hack to replace 'tmb' with 'ori' since API only returns thumb URLs
+        posterUrl = thumbUrl.stringByReplacingOccurrencesOfString("tmb", withString: "ori")
     }
     
+    class func moviesFromDictionaryList(movieDict: [NSDictionary]) -> [MovieModel] {
+        var moviesList = [MovieModel]()
+        for movieData in movieDict {
+            moviesList.append(MovieModel(dictionary: movieData))
+        }
+        return moviesList
+    }
 }

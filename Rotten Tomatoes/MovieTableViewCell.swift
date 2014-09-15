@@ -14,6 +14,11 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var posterView: UIImageView!
     
+    @IBOutlet weak var criticScoreLabel: UILabel!
+    @IBOutlet weak var audienceScoreLabel: UILabel!
+    
+    @IBOutlet weak var criticImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,4 +30,21 @@ class MovieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setCriticScoreLabel(score: NSInteger){
+        if score > 50 {
+            criticImage.image = UIImage(named: "Tomato")
+        } else {
+            criticImage.image = UIImage(named: "Splat")
+        }
+        setLabelScore(criticScoreLabel, score: score)
+    }
+    
+    func setAudienceScoreLabel(score: NSInteger) {
+        setLabelScore(audienceScoreLabel, score: score)
+    }
+    
+    func setLabelScore(label: UILabel, score: NSInteger){
+        label.text = "\(score)%"
+    }
+    
 }

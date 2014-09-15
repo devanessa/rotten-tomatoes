@@ -15,21 +15,19 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var synopsisScrollView: UIScrollView!
     
     var thumbImg: UIImage = UIImage()
-    var movieDetails: NSDictionary = NSDictionary()
+    var movieDetails: MovieModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = movieDetails["title"] as? String
-        
-        let posters = movieDetails["posters"] as NSDictionary
-        var originalPosterURL = posters["original"] as String
-        originalPosterURL = originalPosterURL.stringByReplacingOccurrencesOfString("tmb", withString: "ori")
-        
-        let thumbView = self.posterView.image
-        posterView.setImageWithURL(NSURL(string: originalPosterURL), placeholderImage: thumbImg)
+        if let movie = movieDetails {
+            navigationItem.title = movie.title
+            
+            let thumbView = self.posterView.image
+            posterView.setImageWithURL(NSURL(string: movie.posterUrl), placeholderImage: thumbImg)
 
-        synopsisLabel.text = movieDetails["synopsis"] as? String
+            synopsisLabel.text = movie.synopsis
+        }
     }
 
     override func didReceiveMemoryWarning() {

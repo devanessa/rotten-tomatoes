@@ -23,7 +23,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y3f-S1-yif">
-                                                    <rect key="frame" x="78" y="10" width="221" height="21"/>
+                                                    <rect key="frame" x="78" y="10" width="212" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -34,30 +34,41 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synopsis" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AHt-Gq-p3e">
-                                                    <rect key="frame" x="78" y="32" width="221" height="58"/>
+                                                    <rect key="frame" x="78" y="32" width="212" height="58"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.85393415179999999" green="0.82060482022704073" blue="0.84188205574162578" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="0.22511234129999999" green="0.25218893380000001" blue="0.28884327170000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tpa-GC-lWG">
-                                                    <rect key="frame" x="310" y="9.5" width="41" height="39.5"/>
+                                                    <rect key="frame" x="325" y="16.5" width="41" height="24.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="0.22511234129999999" green="0.25218893380000001" blue="0.28884327170000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hGx-sW-EZx">
-                                                    <rect key="frame" x="310" y="52" width="41" height="39.5"/>
+                                                    <rect key="frame" x="325" y="58.5" width="41" height="23.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="0.22511234129999999" green="0.25218893380000001" blue="0.28884327170000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splat" id="Jf3-Cw-vpE">
+                                                    <rect key="frame" x="298" y="13" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Popcorn2" id="wdx-5B-bnn">
+                                                    <rect key="frame" x="299" y="55" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.2987052670892093" green="0.33463364280126795" blue="0.38327088647959184" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="audienceScoreLabel" destination="hGx-sW-EZx" id="qcy-Kl-a9j"/>
+                                            <outlet property="criticImage" destination="Jf3-Cw-vpE" id="AJW-uC-uQZ"/>
+                                            <outlet property="criticScoreLabel" destination="tpa-GC-lWG" id="x3i-DL-65d"/>
                                             <outlet property="posterView" destination="aw0-5t-eJ5" id="N1u-yb-PAE"/>
                                             <outlet property="synopsisLabel" destination="AHt-Gq-p3e" id="xdS-UX-yBk"/>
                                             <outlet property="titleLabel" destination="Y3f-S1-yif" id="0fX-25-e7R"/>
@@ -156,6 +167,8 @@
     <resources>
         <image name="DVD" width="57" height="57"/>
         <image name="Popcorn" width="57" height="57"/>
+        <image name="Popcorn2" width="57" height="57"/>
+        <image name="Splat" width="76" height="76"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

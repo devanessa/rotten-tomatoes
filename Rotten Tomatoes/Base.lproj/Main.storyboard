@@ -114,24 +114,110 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999973" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synopsis" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7vG-lD-XVR">
-                                <rect key="frame" x="0.0" y="127" width="320" height="441"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="8xL-bC-t3s">
                                 <rect key="frame" x="-5" y="0.0" width="386" height="672"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="VdR-gR-ttr">
+                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view alpha="0.94999999999999996" contentMode="scaleToFill" id="42W-I7-Tz3">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hoa-L0-gxy">
+                                                <rect key="frame" x="309" y="92" width="41" height="23.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="highlightedColor" red="0.22511234129999999" green="0.25218893380000001" blue="0.28884327170000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hTw-Ck-6IZ">
+                                                <rect key="frame" x="309" y="41" width="41" height="23.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="highlightedColor" red="0.22511234129999999" green="0.25218893380000001" blue="0.28884327170000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splat" id="rcC-9A-rUI">
+                                                <rect key="frame" x="280" y="39" width="30" height="27.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Popcorn2" id="PSJ-HA-i6P">
+                                                <rect key="frame" x="280" y="92" width="30" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synopsis" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7vG-lD-XVR">
+                                                <rect key="frame" x="25" y="130" width="325" height="407"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Critic Rating" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vrM-Cr-kE8">
+                                                <rect key="frame" x="278" y="17" width="72" height="23.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="highlightedColor" red="0.22511234129999999" green="0.25218893380000001" blue="0.28884327170000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audience Rating" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nnT-4e-J0Z">
+                                                <rect key="frame" x="257" y="70" width="93" height="23.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="highlightedColor" red="0.22511234129999999" green="0.25218893380000001" blue="0.28884327170000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EtA-Td-vnw">
+                                                <rect key="frame" x="25" y="10" width="245" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration: 100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Hn-i1-28q">
+                                                <rect key="frame" x="25" y="66" width="140" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MPAA Rating: PG" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bbs-b2-pM2">
+                                                <rect key="frame" x="25" y="91" width="140" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released: 8-21-2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SIT-fj-rwG">
+                                                <rect key="frame" x="25" y="41" width="140" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.2987052671" green="0.33463364280000002" blue="0.38327088650000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="u3I-cB-9SU"/>
                     <connections>
+                        <outlet property="audienceLabel" destination="Hoa-L0-gxy" id="8fr-vj-mBI"/>
+                        <outlet property="criticImageView" destination="rcC-9A-rUI" id="dzk-9O-nG3"/>
+                        <outlet property="criticLabel" destination="hTw-Ck-6IZ" id="FXG-Rk-gvG"/>
+                        <outlet property="dateLabel" destination="SIT-fj-rwG" id="bMl-NB-6kI"/>
+                        <outlet property="durationLabel" destination="7Hn-i1-28q" id="DVB-FU-J6X"/>
+                        <outlet property="mpaaLabel" destination="Bbs-b2-pM2" id="Adw-wz-prh"/>
                         <outlet property="posterView" destination="8xL-bC-t3s" id="tmm-B1-MKL"/>
                         <outlet property="synopsisLabel" destination="7vG-lD-XVR" id="oKj-vj-W4S"/>
+                        <outlet property="synopsisScrollView" destination="VdR-gR-ttr" id="bsX-HI-Jt7"/>
+                        <outlet property="titleLabel" destination="EtA-Td-vnw" id="1ll-Gh-vyj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDp-XE-acB" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -14,20 +14,42 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var posterView: UIImageView!
     @IBOutlet weak var synopsisScrollView: UIScrollView!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var mpaaLabel: UILabel!
+    
+    @IBOutlet weak var criticLabel: UILabel!
+    @IBOutlet weak var audienceLabel: UILabel!
+    
+    @IBOutlet weak var criticImageView: UIImageView!
+    
     var thumbImg: UIImage = UIImage()
-    var movieDetails: MovieModel?
+    var movie: MovieModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let movie = movieDetails {
-            navigationItem.title = movie.title
-            
-            let thumbView = self.posterView.image
-            posterView.setImageWithURL(NSURL(string: movie.posterUrl), placeholderImage: thumbImg)
-
-            synopsisLabel.text = movie.synopsis
+        let thumbView = self.posterView.image
+        posterView.setImageWithURL(NSURL(string: movie.posterUrl), placeholderImage: thumbImg)
+        
+        navigationItem.title = movie.title
+        titleLabel.text = movie.title
+        
+        dateLabel.text = "Released: \(movie.releaseDate)"
+        durationLabel.text = "\(movie.runtime) minutes"
+        mpaaLabel.text = "Rated \(movie.mpaa)"
+        
+        criticLabel.text = "\(movie.criticScore)%"
+        audienceLabel.text = "\(movie.audienceScore)%"
+        
+        if movie.criticScore > 50 {
+            criticImageView.image = UIImage(named: "Tomato")
+        } else {
+            criticImageView.image = UIImage(named: "Splat")
         }
+        
+        synopsisLabel.text = movie.synopsis
     }
 
     override func didReceiveMemoryWarning() {

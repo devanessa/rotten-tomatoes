@@ -11,7 +11,7 @@
 		5436DA9719C55C9B00E9BDAD /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436DA9619C55C9B00E9BDAD /* enums.swift */; };
 		5436DA9919C59DDC00E9BDAD /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436DA9819C59DDC00E9BDAD /* MovieModel.swift */; };
 		54EC327B19C148AB000A335B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC327A19C148AB000A335B /* AppDelegate.swift */; };
-		54EC327D19C148AB000A335B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC327C19C148AB000A335B /* ViewController.swift */; };
+		54EC327D19C148AB000A335B /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EC327C19C148AB000A335B /* MovieViewController.swift */; };
 		54EC328019C148AB000A335B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54EC327E19C148AB000A335B /* Main.storyboard */; };
 		54EC328219C148AB000A335B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54EC328119C148AB000A335B /* Images.xcassets */; };
 		54EC328519C148AB000A335B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54EC328319C148AB000A335B /* LaunchScreen.xib */; };
@@ -38,7 +38,7 @@
 		54EC327519C148AB000A335B /* Rotten Tomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rotten Tomatoes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54EC327919C148AB000A335B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54EC327A19C148AB000A335B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		54EC327C19C148AB000A335B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		54EC327C19C148AB000A335B /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		54EC327F19C148AB000A335B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		54EC328119C148AB000A335B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		54EC328419C148AB000A335B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		5436DA9A19C5A06100E9BDAD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				54EC327C19C148AB000A335B /* ViewController.swift */,
+				54EC327C19C148AB000A335B /* MovieViewController.swift */,
 				5436DA9419C4E44100E9BDAD /* MovieDetailViewController.swift */,
 			);
 			name = ViewControllers;
@@ -104,13 +104,13 @@
 				5436DA9A19C5A06100E9BDAD /* ViewControllers */,
 				54EC327A19C148AB000A335B /* AppDelegate.swift */,
 				54EC329C19C42099000A335B /* MovieTableViewCell.swift */,
+				5436DA9819C59DDC00E9BDAD /* MovieModel.swift */,
+				5436DA9619C55C9B00E9BDAD /* enums.swift */,
 				54EC327E19C148AB000A335B /* Main.storyboard */,
 				54EC328119C148AB000A335B /* Images.xcassets */,
 				54EC328319C148AB000A335B /* LaunchScreen.xib */,
-				54EC327819C148AB000A335B /* Supporting Files */,
 				5436DA8D19C42F9700E9BDAD /* Rotten Tomatoes-Bridging-Header.h */,
-				5436DA9619C55C9B00E9BDAD /* enums.swift */,
-				5436DA9819C59DDC00E9BDAD /* MovieModel.swift */,
+				54EC327819C148AB000A335B /* Supporting Files */,
 			);
 			path = "Rotten Tomatoes";
 			sourceTree = "<group>";
@@ -286,7 +286,7 @@
 				5436DA9919C59DDC00E9BDAD /* MovieModel.swift in Sources */,
 				5436DA9519C4E44100E9BDAD /* MovieDetailViewController.swift in Sources */,
 				5436DA9719C55C9B00E9BDAD /* enums.swift in Sources */,
-				54EC327D19C148AB000A335B /* ViewController.swift in Sources */,
+				54EC327D19C148AB000A335B /* MovieViewController.swift in Sources */,
 				54EC327B19C148AB000A335B /* AppDelegate.swift in Sources */,
 				54EC329D19C42099000A335B /* MovieTableViewCell.swift in Sources */,
 			);

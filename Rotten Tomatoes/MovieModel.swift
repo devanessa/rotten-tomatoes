@@ -9,7 +9,7 @@
 import Foundation
 
 class MovieModel {
-    var title, mpaa, synopsis, thumbUrl, posterUrl: String
+    var title, mpaa, synopsis, thumbUrl, posterUrl, releaseDate: String
     var runtime, criticScore, audienceScore: NSInteger
     
     init(dictionary: NSDictionary){
@@ -17,6 +17,9 @@ class MovieModel {
         mpaa = dictionary["mpaa_rating"] as String
         synopsis = dictionary["synopsis"] as String
         runtime = dictionary["runtime"] as NSInteger
+        
+        let dates = dictionary["release_dates"] as NSDictionary
+        releaseDate = dates["theater"] as String
 
         let ratings = dictionary["ratings"] as NSDictionary
         criticScore = ratings["critics_score"] as NSInteger

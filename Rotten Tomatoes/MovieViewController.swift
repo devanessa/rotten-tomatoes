@@ -129,7 +129,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             var detailViewController = segue.destinationViewController as MovieDetailViewController
             
             let indexPath = movieTableView.indexPathForSelectedRow()!
-            detailViewController.movieDetails = movies[indexPath.row]
+            detailViewController.movie = movies[indexPath.row]
             
             let movieCell = movieTableView.cellForRowAtIndexPath(indexPath) as MovieTableViewCell
             detailViewController.thumbImg = movieCell.posterView.image!

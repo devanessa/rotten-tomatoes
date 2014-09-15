@@ -69,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5436DA9A19C5A06100E9BDAD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				54EC327C19C148AB000A335B /* ViewController.swift */,
+				5436DA9419C4E44100E9BDAD /* MovieDetailViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		54EC326C19C148AB000A335B = {
 			isa = PBXGroup;
 			children = (
@@ -92,15 +101,14 @@
 		54EC327719C148AB000A335B /* Rotten Tomatoes */ = {
 			isa = PBXGroup;
 			children = (
+				5436DA9A19C5A06100E9BDAD /* ViewControllers */,
 				54EC327A19C148AB000A335B /* AppDelegate.swift */,
-				54EC327C19C148AB000A335B /* ViewController.swift */,
+				54EC329C19C42099000A335B /* MovieTableViewCell.swift */,
 				54EC327E19C148AB000A335B /* Main.storyboard */,
 				54EC328119C148AB000A335B /* Images.xcassets */,
 				54EC328319C148AB000A335B /* LaunchScreen.xib */,
 				54EC327819C148AB000A335B /* Supporting Files */,
-				54EC329C19C42099000A335B /* MovieTableViewCell.swift */,
 				5436DA8D19C42F9700E9BDAD /* Rotten Tomatoes-Bridging-Header.h */,
-				5436DA9419C4E44100E9BDAD /* MovieDetailViewController.swift */,
 				5436DA9619C55C9B00E9BDAD /* enums.swift */,
 				5436DA9819C59DDC00E9BDAD /* MovieModel.swift */,
 			);

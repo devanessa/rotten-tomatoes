@@ -9,14 +9,18 @@
 import Foundation
 
 class MovieModel {
-    var title: NSString
-    var rating: NSString
-    var synopsis: NSString
+    var title, mpaa, synopsis: NSString
+    var runtime, criticScore, audienceScore: Int
     
     init(dictionary: NSDictionary){
         title = dictionary["title"] as NSString
-        rating = dictionary["rating"] as NSString
+        mpaa = dictionary["mpaa_rating"] as NSString
         synopsis = dictionary["synopsis"] as NSString
+        runtime = dictionary["runtime"] as Int
+        
+        let ratings = dictionary["ratings"] as NSDictionary
+        criticScore = ratings["critics_rating"] as Int
+        audienceScore = ratings["audience_score"] as Int
     }
     
 }

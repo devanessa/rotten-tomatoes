@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
 
-    @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var movieTableView: UITableView!
     
     @IBOutlet weak var movieBarItem: UITabBarItem!
@@ -26,12 +25,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        alertView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 320, height: 50)
-//        alertView.backgroundColor = UIColor.blackColor()
-//        alertView.alpha = 0.8
-        
-//        alertView.hidden = true
         
         movieTableView.dataSource = self
         movieTableView.delegate = self
@@ -52,19 +45,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func fetchMovieData(refresh: Bool = false) {
+        let request = NSMutableURLRequest(URL: NSURL.URLWithString(getURLString()))
+        request.cachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
+        
         if !refresh {
             ZAActivityBar.showWithStatus("Fetching Movies...")
+        } else {
+            // Force reload when pulling down to refresh
+            request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData
         }
-        let request = NSMutableURLRequest(URL: NSURL.URLWithString(getURLString()))
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
             
             if error != nil {
-//                self.alertView.hidden = false
                 ZAActivityBar.showErrorWithStatus("Problem with connecting to network! Try again later.")
-                println("Problem with connecting to network!")
+                // How do I not cache here
             } else {
-//                self.alertView.hidden = true
                 var errorValue: NSError? = nil
                 let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary
                 

@@ -28,7 +28,7 @@ class MovieDetailViewController: UIViewController {
         
         let thumbView = self.posterView.image
         posterView.setImageWithURL(NSURL(string: originalPosterURL), placeholderImage: thumbImg)
-        println(originalPosterURL)
+
         synopsisLabel.text = movieDetails["synopsis"] as? String
     }
 

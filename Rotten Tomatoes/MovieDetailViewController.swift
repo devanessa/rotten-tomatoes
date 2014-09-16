@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MovieDetailViewController: UIViewController {
+class MovieDetailViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var synopsisLabel: UILabel!
     @IBOutlet weak var posterView: UIImageView!
-    @IBOutlet weak var synopsisScrollView: UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -24,11 +24,15 @@ class MovieDetailViewController: UIViewController {
     
     @IBOutlet weak var criticImageView: UIImageView!
     
+    @IBOutlet weak var contentView: UIView!
+    
     var thumbImg: UIImage = UIImage()
     var movie: MovieModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView.delegate = self
         
         let thumbView = self.posterView.image
         posterView.setImageWithURL(NSURL(string: movie.posterUrl), placeholderImage: thumbImg)
@@ -50,7 +54,16 @@ class MovieDetailViewController: UIViewController {
         }
         
         synopsisLabel.text = movie.synopsis
+        synopsisLabel.sizeToFit()
+        
+        let contentHeight = synopsisLabel.frame.height + 160 // height of synopsis content and movie details
+        let height = contentHeight + 475
+        scrollView.contentSize = CGSize(width: contentView.frame.width, height: height)
     }
+    
+//    func scrollViewDidScroll(scrollView: UIScrollView) {
+//        println("Scroll amount: \(scrollView.contentSize)")
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

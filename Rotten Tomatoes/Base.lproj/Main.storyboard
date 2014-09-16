@@ -14,7 +14,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="QrF-2M-1ve">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="moviecell" rowHeight="100" id="2j1-4D-Bqc" customClass="MovieTableViewCell" customModule="Rotten_Tomatoes" customModuleProvider="target">
@@ -83,7 +83,7 @@
                             </tableView>
                             <tabBar contentMode="scaleToFill" barStyle="black" id="xPs-gt-Gj9">
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <tabBarItem title="Box Office" image="Popcorn" id="nyD-SK-C4n"/>
                                     <tabBarItem title="Top Rentals" image="DVD" id="mY0-TW-bjn"/>
@@ -115,15 +115,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="8xL-bC-t3s">
-                                <rect key="frame" x="-5" y="0.0" width="386" height="672"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <rect key="frame" x="0.0" y="0.0" width="386" height="672"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="VdR-gR-ttr">
-                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view alpha="0.94999999999999996" contentMode="scaleToFill" id="42W-I7-Tz3">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
+                                        <rect key="frame" x="0.0" y="463" width="375" height="650"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hoa-L0-gxy">
@@ -149,7 +149,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synopsis" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7vG-lD-XVR">
-                                                <rect key="frame" x="25" y="130" width="325" height="407"/>
+                                                <rect key="frame" x="25" y="142" width="325" height="395"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -202,6 +202,9 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8Nr-rQ-Guq" id="SWT-ic-81g"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -209,14 +212,15 @@
                     <navigationItem key="navigationItem" id="u3I-cB-9SU"/>
                     <connections>
                         <outlet property="audienceLabel" destination="Hoa-L0-gxy" id="8fr-vj-mBI"/>
+                        <outlet property="contentView" destination="42W-I7-Tz3" id="R8L-XB-EfL"/>
                         <outlet property="criticImageView" destination="rcC-9A-rUI" id="dzk-9O-nG3"/>
                         <outlet property="criticLabel" destination="hTw-Ck-6IZ" id="FXG-Rk-gvG"/>
                         <outlet property="dateLabel" destination="SIT-fj-rwG" id="bMl-NB-6kI"/>
                         <outlet property="durationLabel" destination="7Hn-i1-28q" id="DVB-FU-J6X"/>
                         <outlet property="mpaaLabel" destination="Bbs-b2-pM2" id="Adw-wz-prh"/>
                         <outlet property="posterView" destination="8xL-bC-t3s" id="tmm-B1-MKL"/>
+                        <outlet property="scrollView" destination="VdR-gR-ttr" id="pfY-u7-WZ0"/>
                         <outlet property="synopsisLabel" destination="7vG-lD-XVR" id="oKj-vj-W4S"/>
-                        <outlet property="synopsisScrollView" destination="VdR-gR-ttr" id="bsX-HI-Jt7"/>
                         <outlet property="titleLabel" destination="EtA-Td-vnw" id="1ll-Gh-vyj"/>
                     </connections>
                 </viewController>

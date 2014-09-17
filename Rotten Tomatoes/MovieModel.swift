@@ -16,8 +16,15 @@ class MovieModel {
         title = dictionary["title"] as String
         mpaa = dictionary["mpaa_rating"] as String
         synopsis = dictionary["synopsis"] as String
-//        runtime = dictionary["runtime"] as NSInteger
-        runtime = 0     // FIXME... this crashes if runtime is ""
+        
+        // this sometimes crashes if runtime was set as ""
+        var run: NSInteger? = dictionary["runtime"] as? NSInteger
+        if run != nil {
+            self.runtime = run!
+        } else {
+            self.runtime = 0
+        }
+//        runtime = 0     // FIXME... this crashes if runtime is ""
         let dates = dictionary["release_dates"] as NSDictionary
         releaseDate = dates["theater"] as String
 

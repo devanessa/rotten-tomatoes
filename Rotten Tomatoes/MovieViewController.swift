@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
 
     @IBOutlet weak var movieTableView: UITableView!
     
@@ -17,7 +17,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tabBar: UITabBar!
 
+    @IBOutlet weak var searchButton: UIBarButtonItem!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var movies: [MovieModel] = []
+    var filteredMovies: [MovieModel] = []
+    
     var refreshControl = UIRefreshControl()
     
     var listingType: ListingType = ListingType.BoxOffice
@@ -30,6 +35,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         movieTableView.dataSource = self
         movieTableView.delegate = self
         tabBar.delegate = self
+        
+//        let delta = searchBar.frame.size.height
+//        searchBar.frame = CGRectOffset(searchBar.frame, 0.0, -delta)
+//        searchBar.hidden = true
+//
+//        let navigationBarFrame = navigationController?.navigationBar.frame
+//        movieTableView.frame = CGRectOffset(navigationBarFrame!, 0.0, 600)
         
         // Default to Movie listings
         if tabBar.selectedItem == nil {
@@ -102,13 +114,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            return self.filteredMovies.count
+        } else {
+            return movies.count
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("detailSegue", sender: tableView)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = movieTableView.dequeueReusableCellWithIdentifier("moviecell") as MovieTableViewCell
         
-        var movie = movies[indexPath.row]
+        var movie: MovieModel
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            movie = filteredMovies[indexPath.row]
+        } else {
+            movie = movies[indexPath.row]
+        }
         
         cell.titleLabel.text = movie.title
         cell.synopsisLabel.text = movie.synopsis
@@ -124,12 +149,49 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
+    
+    @IBAction func toggleSearch(sender: AnyObject) {
+        searchBar.hidden = false
+        searchBar.frame = CGRectOffset(self.searchBar.frame, 0.0, searchBar.frame.size.height);
+    }
+    
+    func filterContentForSearchTerm(searchTerm: String) {
+        filteredMovies = []
+
+        filteredMovies = movies.filter({ (movie: MovieModel) -> Bool in
+            let match = movie.title.rangeOfString(searchTerm)
+            return match != nil
+        })
+
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController, willShowSearchResultsTableView tableView: UITableView) {
+        tableView.rowHeight = movieTableView.rowHeight
+//        tableView.backgroundColor = movieTableView.backgroundColor
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        self.filterContentForSearchTerm(searchString)
+        return true
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+        self.filterContentForSearchTerm(self.searchDisplayController!.searchBar.text)
+        return true
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "detailSegue") {
             var detailViewController = segue.destinationViewController as MovieDetailViewController
             
-            let indexPath = movieTableView.indexPathForSelectedRow()!
-            detailViewController.movie = movies[indexPath.row]
+            var indexPath: NSIndexPath
+            if sender as UITableView == self.searchDisplayController!.searchResultsTableView {
+                indexPath = self.searchDisplayController!.searchResultsTableView.indexPathForSelectedRow()!
+                detailViewController.movie = filteredMovies[indexPath.row]
+            } else {
+                indexPath = movieTableView.indexPathForSelectedRow()!
+                detailViewController.movie = movies[indexPath.row]
+            }
             
             let movieCell = movieTableView.cellForRowAtIndexPath(indexPath) as MovieTableViewCell
             detailViewController.thumbImg = movieCell.posterView.image!

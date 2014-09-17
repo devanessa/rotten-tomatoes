@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieDetailViewController: UIViewController, UIScrollViewDelegate {
+class MovieDetailViewController: UIViewController {
 
     @IBOutlet weak var synopsisLabel: UILabel!
     @IBOutlet weak var posterView: UIImageView!
@@ -32,8 +32,6 @@ class MovieDetailViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.delegate = self
-        
         let thumbView = self.posterView.image
         posterView.setImageWithURL(NSURL(string: movie.posterUrl), placeholderImage: thumbImg)
         
@@ -41,8 +39,18 @@ class MovieDetailViewController: UIViewController, UIScrollViewDelegate {
         titleLabel.text = movie.title
         
         dateLabel.text = "Released: \(movie.releaseDate)"
-        durationLabel.text = "\(movie.runtime) minutes"
-        mpaaLabel.text = "Rated \(movie.mpaa)"
+        
+        if movie.runtime != 0 {
+            durationLabel.text = "\(movie.runtime) minutes"
+        } else {
+            durationLabel.text = "" // leave runtime as blank
+        }
+        
+        if movie.mpaa == "Unrated" { // don't need redundant 'Rated' string
+            mpaaLabel.text = movie.mpaa
+        } else {
+            mpaaLabel.text = "Rated \(movie.mpaa)"
+        }
         
         criticLabel.text = "\(movie.criticScore)%"
         audienceLabel.text = "\(movie.audienceScore)%"
@@ -57,13 +65,9 @@ class MovieDetailViewController: UIViewController, UIScrollViewDelegate {
         synopsisLabel.sizeToFit()
         
         let contentHeight = synopsisLabel.frame.height + 160 // height of synopsis content and movie details
-        let height = contentHeight + 475
+        let height = contentHeight + 475 // this is a truly magic number!
         scrollView.contentSize = CGSize(width: contentView.frame.width, height: height)
     }
-    
-//    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        println("Scroll amount: \(scrollView.contentSize)")
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

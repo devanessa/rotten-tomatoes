@@ -102,20 +102,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.22351249510757221" green="0.25039665747544304" blue="0.28679049744897955" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Movies" id="gy4-bT-3TF">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="CCb-da-puV">
-                            <connections>
-                                <action selector="toggleSearch:" destination="vXZ-lx-hvc" id="fOd-B8-qKr"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Movies" id="gy4-bT-3TF"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="dvdBarItem" destination="mY0-TW-bjn" id="2hH-yv-giT"/>
                         <outlet property="movieBarItem" destination="nyD-SK-C4n" id="4VK-ku-VkM"/>
                         <outlet property="movieTableView" destination="QrF-2M-1ve" id="tsn-tj-iua"/>
                         <outlet property="searchBar" destination="rYd-ez-V4H" id="WYD-Y1-UJW"/>
-                        <outlet property="searchButton" destination="CCb-da-puV" id="c1e-8Z-4kd"/>
                         <outlet property="searchDisplayController" destination="9TY-ya-gnY" id="TJC-kK-AHw"/>
                         <outlet property="tabBar" destination="xPs-gt-Gj9" id="hZF-Pb-xDC"/>
                         <segue destination="8Nr-rQ-Guq" kind="push" identifier="detailSegue" id="kWb-dN-EUz"/>

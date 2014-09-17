@@ -17,7 +17,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tabBar: UITabBar!
 
-    @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
     
     var movies: [MovieModel] = []

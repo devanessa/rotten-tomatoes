@@ -32,7 +32,6 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let thumbView = self.posterView.image
         posterView.setImageWithURL(NSURL(string: movie.posterUrl), placeholderImage: thumbImg)
         
         navigationItem.title = movie.title

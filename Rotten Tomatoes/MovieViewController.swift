@@ -36,12 +36,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         movieTableView.delegate = self
         tabBar.delegate = self
         
-//        let delta = searchBar.frame.size.height
-//        searchBar.frame = CGRectOffset(searchBar.frame, 0.0, -delta)
-//        searchBar.hidden = true
-//
-//        let navigationBarFrame = navigationController?.navigationBar.frame
-//        movieTableView.frame = CGRectOffset(navigationBarFrame!, 0.0, 600)
         
         // Default to Movie listings
         if tabBar.selectedItem == nil {
@@ -115,7 +109,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.searchDisplayController!.searchResultsTableView {
-            return self.filteredMovies.count
+            return filteredMovies.count
         } else {
             return movies.count
         }
@@ -149,12 +143,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    
-    @IBAction func toggleSearch(sender: AnyObject) {
-        searchBar.hidden = false
-        searchBar.frame = CGRectOffset(self.searchBar.frame, 0.0, searchBar.frame.size.height);
-    }
-    
     func filterContentForSearchTerm(searchTerm: String) {
         filteredMovies = []
 
@@ -167,7 +155,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func searchDisplayController(controller: UISearchDisplayController, willShowSearchResultsTableView tableView: UITableView) {
         tableView.rowHeight = movieTableView.rowHeight
-//        tableView.backgroundColor = movieTableView.backgroundColor
     }
     
     func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {

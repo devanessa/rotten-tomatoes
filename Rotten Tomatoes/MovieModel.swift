@@ -24,7 +24,7 @@ class MovieModel {
         } else {
             self.runtime = 0
         }
-//        runtime = 0     // FIXME... this crashes if runtime is ""
+        
         let dates = dictionary["release_dates"] as NSDictionary
         releaseDate = dates["theater"] as String
 

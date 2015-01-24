@@ -51,7 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func fetchMovieData(refresh: Bool = false) {
-        let request = NSMutableURLRequest(URL: NSURL.URLWithString(getURLString()))
+        let request = NSMutableURLRequest(URL: NSURL(string: getURLString())!)
         request.cachePolicy = NSURLRequestCachePolicy.ReturnCacheDataElseLoad
         
         if !refresh {
@@ -65,6 +65,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             if error != nil {
                 ZAActivityBar.showErrorWithStatus("Problem with connecting to network! Try again later.")
+                NSLog("Error calling api: \(error)")
                 // How do I not cache here
             } else {
                 var errorValue: NSError? = nil
